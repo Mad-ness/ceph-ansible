@@ -128,6 +128,8 @@ def pytest_collection_modifyitems(session, config, items):
             item.add_marker(pytest.mark.rgws)
         elif "nfs" in test_path:
             item.add_marker(pytest.mark.nfss)
+        elif "iscsi" in test_path:
+            item.add_marker(pytest.mark.iscsi-gws)
         else:
             item.add_marker(pytest.mark.all)
 

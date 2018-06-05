@@ -16,16 +16,17 @@ def node(host, request):
     # tox will pass in this environment variable. we need to do it this way
     # because testinfra does not collect and provide ansible config passed in
     # from using --extra-vars
-    ceph_stable_release = os.environ.get("CEPH_STABLE_RELEASE", "luminous")
+    ceph_stable_release = os.environ.get("CEPH_STABLE_RELEASE", "nautilus")
     node_type = ansible_vars["group_names"][0]
     docker = ansible_vars.get("docker")
     osd_auto_discovery = ansible_vars.get("osd_auto_discovery")
     lvm_scenario = ansible_vars.get("osd_scenario") == 'lvm'
     ceph_release_num = {
-      'jewel': 10,
-      'kraken': 11,
-      'luminous': 12,
-      'mimic': 13
+        'jewel': 10,
+        'kraken': 11,
+        'luminous': 12,
+        'mimic': 13,
+        'nautilus': 14,
     }
     if not request.node.get_marker(node_type) and not request.node.get_marker('all'):
         pytest.skip("Not a valid test for node type: %s" % node_type)
